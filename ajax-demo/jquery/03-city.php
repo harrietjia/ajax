@@ -1,0 +1,20 @@
+<?php
+    $province = $_POST['province'];
+
+    switch($province){
+        case "山东省" :
+            $cities = '["1","2","3"]';
+            break;
+        case "辽宁省" :
+            $cities = '["4","5","6"]';
+            break;
+        case "吉林省" :
+            $cities = '["7","8","9"]';
+            break;
+        case "广东省" :
+            $cities = '["0","0","8"]';
+            break;
+    }
+
+    echo $cities;
+?>

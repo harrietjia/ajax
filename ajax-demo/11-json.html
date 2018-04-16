@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax-json</title>
+</head>
+<body>
+    <input type="button" name="btn" value="json">
+
+    <script type="text/javascript">
+        var Obtn = document.getElementsByName("btn")[0];
+        Obtn.onclick = function(){
+            var xhr = getXhr();
+
+            xhr.open("post","11.php");
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+            //需要构建符合JSON格式的字符串
+            //需要外围是单引号‘’ 里面是双引号“”
+            var user ='{"name":"harriet","pwd":"ljh"}';
+
+            // var province = '{"city":["1","2","3"]}';
+
+            xhr.send('user='+user);
+
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4 && xhr.status ==200){
+                    var data = xhr.responseText;
+
+                    /* 使用eval()函数进行json转换
+                    *  使用"()"将其包裹，eval()函数强制将其转换为JSON格式(javascript代码)
+                    *  不使用"()"将其包裹，eval()函数将其识别为一个空的代码块
+                    */
+                    var json = eval("("+data+")")
+                    console.log(json.name);
+                }
+            }
+        }
+
+        function getXhr(){
+            var xhr = null;
+
+            if(window.XMLHttpRequest){
+                xhr = new XMLHttpRequest();
+            }else{
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            return xhr;
+        }
+    </script>
+</body>
+</html>

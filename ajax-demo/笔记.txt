@@ -1,0 +1,43 @@
+实现ajax异步交互步骤：
+创建XMLHttpRequest核心对象
+	function getXhr(){
+            var xhr = null;
+
+            if(window.XMLHttpRequest){
+                xhr = new XMLHttpRequest();
+            }else{
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            return xhr;
+        }
+
+与服务器端建立连接
+	使用XMLHttpRequest对象的open(method,url)方法
+	method - 设置当前请求的类型
+	url - 设置当前请求的地址
+	（如果是post方法需要设置请求头
+	xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');）
+向服务器端发送请求
+	使用XMLHttpRequest对象的send(请求参数)方法
+	请求参数的格式 - key=value
+接受服务器端的响应数据
+	使用XMLHttpRequest对象的onreadystatechange事件
+监听服务器端的通信状态
+	使用XMLHttpRequest对象的readyState属性，判断服务器端当前的状态（0-4）
+	使用XMLHttpRequest对象的status属性，判断服务器端当前的状态码（200）
+
+
+
+ajax中的XML格式
+	请求的数据格式 - XML
+	  客户端如何构建符合XML格式的数据
+	    构建的数据类型 - 字符串（string）类型
+	    字符串的内容符合XML格式的语法要求
+	  服务器端如何接受符合XML格式的数据
+	    接受客户端的请求数据 - 字符串（string）类型
+	    PHP集成了DOM的相关内容
+		DOMDocument类
+		DOMElement类
+		DOMNode类
+	  响应的数据格式 - XML
+		

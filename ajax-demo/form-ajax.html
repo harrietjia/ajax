@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax-form</title>
+</head>
+<body>
+    <form>
+        user : <input type="text" placeholder="user" id="user">
+        password : <input type="text" placeholder="password" id="password">
+        <input type="button" value="submit" id="btn">
+    </form>
+
+    <script type="text/javascript">
+        var Obtn = document.getElementById("btn");
+        var Ouser = document.getElementById("user");
+        var Opwd = document.getElementById("password");
+
+        Obtn.onclick = function(){
+            var xhr = getXhr();
+
+            xhr.open("post","02.php");
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            xhr.send("user="+Ouser.value+"&pwd="+Opwd.value);
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4 && xhr.status == 200){
+                    var data = xhr.responseText;
+                    console.log(data);
+                }
+            }
+        }
+
+        function getXhr(){
+            var xhr = null;
+
+            if(window.XMLHttpRequest){
+                xhr = new XMLHttpRequest();
+            }else{
+                xhr =new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            return xhr;
+        }
+    </script>
+</body>
+</html>

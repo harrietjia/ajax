@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery-二级联动</title>
+    <script type="text/javascript" src="jquery.js"></script>
+</head>
+<body>
+    <select id="province">
+        <option>请选择</option>
+    </select>
+    <select id="city">
+        <option>请选择</option>
+    </select>
+
+    <script type="text/javascript">
+        $(function(){
+
+            $.get("03-province.php",function(data){
+
+                for(var i = 0;i<data.length;i++){
+
+                    $('#province').append($("<option>"+data[i]+"</option>"));
+
+                    /*js
+                    var opt = document.createElement('option');
+                    var txt = document.createTextNode(data[i]);
+
+                    opt.appendChild(txt);
+                    $('#province').append(opt);
+                    */
+                }
+
+            },"json");
+
+        });
+
+        $('#province').change(function(){
+            var proValue = {"province":$("#province").val()};
+
+            $('#city').empty().append($("<option>请选择</option>"));
+
+            $.post("03-city.php",proValue,function(data){
+                for(var j = 0;j<data.length;j++){
+                    $('#city').append($("<option>"+data[j]+"</option>"));
+                }
+            },"json");
+
+        });
+    </script>
+</body>
+</html>

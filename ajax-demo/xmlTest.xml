@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+    <user number="01">
+        <name>ljh</name>
+        <age>20</age>
+        <addr>guangzhou</addr>
+        <love id="love" />
+    </user>
+    <user number="02">
+        <name>harriet</name>
+        <age>20</age>
+        <addr>zengcheng</addr>
+        <love/>
+    </user>
+</users>

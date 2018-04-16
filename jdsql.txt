@@ -1,0 +1,50 @@
+﻿create database jd character set utf8;
+
+CREATE TABLE IF NOT EXISTS jd_orders(
+    order_id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    order_num VARCHAR(10) NOT NULL,
+    shop_name VARCHAR(40) NOT NULL,
+    order_url VARCHAR(100) NOT NULL,
+    user_name VARCHAR(40) NOT NULL,
+    price DECIMAL(16, 2) NOT NULL,
+    payment_mode VARCHAR(10) NOT NULL,
+    submit_time VARCHAR(20) NOT NULL,
+    order_state INT(1) NOT NULL
+);
+
+insert into jd_orders values(1,'9545709796','BROWNE FOX旗舰店','','aaa','3567.50','货到付款','2015-5-10T15:20:20',3)
+insert into jd_orders values(2,'9545709796','百度','http://baidu.com','aaa','67.50','在线支付','2015-05-05T9:14:20',2)
+insert into jd_orders values(3,'9545709754','京东旗舰店','#','aaa','29.30','在线支付','2015-06-10T16:20:20',3)
+insert into jd_orders values(4,'9545712546','天猫旗舰店','#','aaa','21350.50','分期付款','2015-8-15T05:30:20',3)
+
+CREATE TABLE IF NOT EXISTS jd_orders_product_detail(
+    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    order_id INT(11) NOT NULL,
+    product_id INT(11) NOT NULL
+);
+
+insert into jd_orders_product_detail values(1,1,1);
+insert into jd_orders_product_detail values(2,1,2);
+insert into jd_orders_product_detail values(3,2,3);
+insert into jd_orders_product_detail values(4,3,4);
+insert into jd_orders_product_detail values(5,4,5);
+
+CREATE TABLE IF NOT EXISTS jd_products(
+    product_id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    product_name VARCHAR(100) NOT NULL,
+    product_url VARCHAR(100) NOT NULL,
+    product_img VARCHAR(100) NOT NULL
+);
+
+insert into jd_products values(1,'【限量秒杀款】百度男士时尚韩版腰带加宽商务皮带 A款咖啡色','http://baidu.com','img/lofotenxs.jpg');
+insert into jd_products values(2,'BROWNE FOX旗舰店通用皮带打孔器打孔针 银色','#','img/lofotenxs-001.jpg');
+insert into jd_products values(3,'阿迪达斯棒球滚 明星同款 白色球鞋尼克斯夫纳斯柯达农家肥烦恼丝','#','img/lofotenxs-002.jpg');
+insert into jd_products values(4,'放松地离开时尚韩版腰带加宽商务皮带 B款黑色','http://baidu.com','img/lofotenxs-003.jpg');
+
+select o.order_num,o.shop_name,o.order_url,o.price,o.payment_mode,o.submit_time,o.order_state,
+p.product_name,p.product_url,p.product_img from jd_orders o,jd_orders_product_detail d,jd_products p
+where o.order_id = d.order_id and p.product_id = d.product_id and o.user_name ='aaa'
+
+
+
+

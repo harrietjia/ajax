@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery-ajax-load</title>
+    <script type="text/javascript" src="jquery.js"></script>
+</head>
+<body>
+    <input type="button" id="btn" value="ajax-load">
+    <div>
+
+    </div>
+    <script type="text/javascript">
+        $('#btn').click(function() {
+            var user = {"name" : "harriet","pwd":"ljh"};
+            $('div').load("01.php",user,function(data){
+                console.log(data);
+            });
+        });
+    </script>
+</body>
+</html>

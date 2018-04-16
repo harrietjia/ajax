@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery-get</title>
+    <script type="text/javascript" src="jquery.js"></script>
+</head>
+<body>
+    <input type="button" id="btn" value="get">
+
+    <script type="text/javascript">
+        $('#btn').click(function(){
+            var user = {"name":"harriet","pwd":"ljh"};
+            $.get("02.php",user,function(data){
+                //可以解析JSON
+                // console.log(eval("("+data+")"));
+                console.log(data);
+            },"json");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录cookie</title>
+</head>
+<body>
+    <form id="login" onsubmit="return formSubmit();" action="09_result.html" method="post">
+        user : <input type="text" id="username" placeholder="username"><br>
+        password : <input type="text" id="password" placeholder="password"><br>
+        <input type="submit" id="btn" value="login-cookie">
+    </form>
+
+    <script type="text/javascript">
+        function formSubmit(){
+            var username = document.getElementById('username').value;
+
+            var time = new Date().getTime()+1000*3600*24*7;
+            var d = new Date(time);
+
+            document.cookie = "user="+username+";expires="+d;
+            document.cookie = "pwd=123;expires="+d;
+            document.cookie = "sb=username;expires="+d;
+            return true;
+        }
+    </script>
+</body>
+</html>
