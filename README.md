@@ -7,5 +7,5 @@
 <img src="https://github.com/harrietjia/ajax/blob/master/img/图片1.png?raw=true"><br>
 第三个div是幸运转盘，也是使用画布，通过旋转画布来达到转载转盘的效果。
 <img src="https://github.com/harrietjia/ajax/blob/master/img/图片3.png?raw=true"><br>
-	在ajax-demo文件夹中有原生的ajax例子和jquery.ajax的小例子
+	在ajax-demo文件夹中有原生的ajax例子和jquery.ajax的小例子和笔记
 	
